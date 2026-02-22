@@ -73,6 +73,11 @@ export const MeditationApp = () => {
   };
 
   const completeSession = (elapsedSeconds: number) => {
+    if (elapsedSeconds <= 0) {
+      setIsInSession(false);
+      return;
+    }
+
     const session: MeditationSessionType = {
       id: Date.now().toString(),
       pattern: selectedPattern,
